@@ -129,7 +129,7 @@ class AutomationTest(unittest.TestCase):
         
 
 
-emails = ['testemail200@gmail.com', 'testemail201@gmail.com']
+emails = ['testemail300mn@gmail.com', 'testemail400mn@gmail.com'] #please give any two email if already registered
 at = AutomationTest()
 at.create_account(emails)
 at.order(emails)
