@@ -82,6 +82,7 @@ class AutomationTest(unittest.TestCase):
             driver.find_element(By.XPATH,"//img[@alt='Printed Dress']").click()
             driver.find_element(By.XPATH,"//p[@id='add_to_cart']/button/span").click()
             driver.find_element(By.XPATH,"//div[@id='layer_cart']/div/div[2]/div[4]/span/span").click()
+            time.sleep(3)
             driver.find_element(By.XPATH,"//div[@id='block_top_menu']/ul/li[3]/a").click()
             driver.find_element(By.ID,"layered_id_attribute_group_14").click()
             driver.find_element(By.XPATH,"//img[@alt='Faded Short Sleeve T-shirts']").click()
@@ -97,39 +98,11 @@ class AutomationTest(unittest.TestCase):
             driver.find_element(By.XPATH,"//img[@alt='My Store']").click()
             time.sleep(3)
 
-    def is_element_present(self, how, what):
-        try:
-            self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e:
-            return False
-        return True
 
-    def is_alert_present(self):
-        try:
-            self.driver.switch_to_alert()
-        except NoAlertPresentException as e:
-            return False
-        return True
-
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally:
-            self.accept_next_alert = True
-
-    def tearDown(self):
-        self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
         
 
 
-emails = ['testemail300mn@gmail.com', 'testemail400mn@gmail.com'] #please give any two email if already registered
+emails = ['testemail300@gmail.com', 'testemail400@gmail.com'] #please give any two email if already registered
 at = AutomationTest()
 at.create_account(emails)
 at.order(emails)
